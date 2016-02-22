@@ -5,4 +5,8 @@ end
 
 class User < ActiveRecord::Base
   has_secure_password
+  validates :password,
+    presence: true
+  validates :password,
+    length: {in: 8..15}
 end

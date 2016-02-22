@@ -2,9 +2,16 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>account_book</title>
+  <title>draw_sketch</title>
 </head>
 <body>
-
+  <% unless session[:user] %>
+    <a href="/sign_in">ログイン</a>
+    <a href="/sign_up">新規登録</a><br>
+    <h2>未ログイン</h2>
+  <% else %>
+    <a href="/sign_out">ログアウト</a>
+    <h2><%= User.find(session[:user]).name %>としてログイン</h2>
+  <% end %>
 </body>
 </html>
