@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>draw_sketch</title>
+  <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 <body>
   <% unless session[:user] %>
@@ -10,12 +11,57 @@
     <a href="/sign_up">新規登録</a><br>
     <h2>未ログイン</h2>
   <% else %>
+  
+  
     <a href="/sign_out">ログアウト</a>
     <h2><%= User.find(session[:user]).name %>としてログイン</h2>
-    <form name="formDate" action="/create" method="post">
-      <p>タイトル：<input name="title" type="text"></p>
-      <button class="btn" onclick="saveImg()">追加</button>
-    </form>
+    <div class="entry_form">
+      <form name="formDate" action="/create" method="post">
+        <p>タイトル：<input name="title" type="text"></p>
+        
+        <div class="draw clearfix">
+          <canvas id="canvas"></canvas>
+          <script type="text/javascript" src="/assets/js/read.js"></script>
+          <script id="processing-code" type="application/processing">
+            int bgcolor = #ffffff;
+            void setup() {
+              size(500, 500);
+              background(bgcolor);
+            }
+            void draw() {
+              int dcolor = #000000;
+              if ((keyPressed) && (key == 'r')) dcolor = #ff0000;
+              if ((keyPressed) && (key == 'b')) dcolor = #0000ff;
+              if ((keyPressed) && (key == 'g')) dcolor = #00ff00;
+              if (mouseButton == LEFT) {
+                strokeWeight(3);
+                stroke(dcolor);
+                if (mousePressed) line (mouseX, mouseY, pmouseX, pmouseY);
+              } else if (mouseButton == RIGHT) {
+                strokeWeight(10);
+                stroke(bgcolor);
+                if (mousePressed) line (mouseX, mouseY, pmouseX, pmouseY);
+              }
+            }
+          </script>
+  				
+          <div class="color_box">
+            <p class="ex ex_red">red -> r</p>
+            <p class="ex ex_green">green -> g</p>
+            <p class="ex ex_blue">blue -> b</p>
+          </div>
+        </div>
+        <script type="text/javascript">
+          function saveImg() {
+            var png = document.getElementById("canvas").toDataURL();
+            document.getElementById('img').value = png
+          }
+        </script>
+        <input name="imgURL" type="hidden" value="" id="img">
+        <button class="btn" onclick="saveImg()">追加</button>
+      </form>
+    </div>
     <% end %>
 </body>
+<script type="text/javascript" src="/assets/js/processing.js"></script>
 </html>

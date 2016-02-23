@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+canvas {
+  border: 1px solid #000; }
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden; }
+
+.draw {
+  margin: 0 auto;
+  width: 645px; }
+  .draw #canvas {
+    float: left;
+    margin: 10px; }
+  .draw .color_box {
+    float: left; }
+    .draw .color_box .ex {
+      padding: 10px 8px;
+      color: #fff;
+      margin: 10px 0 0 10px;
+      text-align: center;
+      font-weight: bold; }
+    .draw .color_box .ex_red {
+      background-color: #f00; }
+    .draw .color_box .ex_green {
+      background-color: #0f0; }
+    .draw .color_box .ex_blue {
+      background-color: #00f; }
+
+.entry_form {
+  width: 645px;
+  margin: 0 auto;
+  text-align: center; }
+  .entry_form .btn {
+    padding: 5px 10px; }
+
+/*# sourceMappingURL=main.css.map */

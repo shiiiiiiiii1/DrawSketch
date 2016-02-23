@@ -20,6 +20,10 @@ get '/sign_out' do
   session[:user] = nil
   redirect '/'
 end
+get '/view' do
+  @contributions = Contribution.all
+  erb :view
+end
 
 post '/sign_up' do
   @user = User.create(
@@ -44,6 +48,7 @@ end
 post '/create' do
   Contribution.create({
     title: params[:title],
+    img: params[:imgURL],
     user_id: session[:user]
   })
   redirect '/'

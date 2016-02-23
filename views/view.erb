@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>views</title>
+	<link rel="stylesheet" href="../assets/css/main.css">
+	<script src="../assets/js/processing.js"></script>
+</head>
+<body>
+  <div>
+  	<% @contributions.each do |contribution| %>
+  	<div>
+  		<p><%= contribution.user_id %></p>
+  		<p><%= contribution.title %></p>
+  		<img src="<%= contribution.img %>">
+  	</div>
+  	<% end %>
+	</div>
+</body>
+</html>
