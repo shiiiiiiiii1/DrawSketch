@@ -12,6 +12,10 @@
   <% else %>
     <a href="/sign_out">ログアウト</a>
     <h2><%= User.find(session[:user]).name %>としてログイン</h2>
-  <% end %>
+    <form name="formDate" action="/create" method="post">
+      <p>タイトル：<input name="title" type="text"></p>
+      <button class="btn" onclick="saveImg()">追加</button>
+    </form>
+    <% end %>
 </body>
 </html>

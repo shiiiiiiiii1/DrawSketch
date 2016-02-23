@@ -40,3 +40,11 @@ post '/sign_in' do
   end
   redirect '/'
 end
+
+post '/create' do
+  Contribution.create({
+    title: params[:title],
+    user_id: session[:user]
+  })
+  redirect '/'
+end
