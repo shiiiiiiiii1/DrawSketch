@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>views</title>
+	<link rel="stylesheet" href="../assets/css/main.css">
+	<script src="../assets/js/processing.js"></script>
+</head>
+<body>
+  <header class="user_header">
+		<div class="body_width">
+			<h1 class="logo inline">LG</h1>
+			<div class="nav_box inline"><!--
+		 --><a class="nav inline border_link" href="">ホーム</a><!--
+		 --><a class="nav inline nav_link" href="">投稿一覧</a>
+			</div>
+			<h2 class="account inline">shiiiiiiiii1</h2>
+		</div>
+	</header>
+
+  <div class="body_width">
+    <div class="entry_form">
+      <form name="formDate" action="/create" method="post">
+        <p>タイトル：<input name="title" type="text"></p>
+        
+        <div class="draw clearfix">
+          <canvas id="canvas"></canvas>
+          <script type="text/javascript" src="/assets/js/read.js"></script>
+          <script id="processing-code" type="application/processing">
+            int bgcolor = #ffffff;
+            void setup() {
+              size(500, 500);
+              background(bgcolor);
+            }
+            void draw() {
+              int dcolor = #000000;
+              if ((keyPressed) && (key == 'r')) dcolor = #ff0000;
+              if ((keyPressed) && (key == 'b')) dcolor = #0000ff;
+              if ((keyPressed) && (key == 'g')) dcolor = #00ff00;
+              if (mouseButton == LEFT) {
+                strokeWeight(3);
+                stroke(dcolor);
+                if (mousePressed) line (mouseX, mouseY, pmouseX, pmouseY);
+              } else if (mouseButton == RIGHT) {
+                strokeWeight(10);
+                stroke(bgcolor);
+                if (mousePressed) line (mouseX, mouseY, pmouseX, pmouseY);
+              }
+            }
+          </script>
+  				
+          <div class="color_box">
+            <p class="ex ex_red">red -> r</p>
+            <p class="ex ex_green">green -> g</p>
+            <p class="ex ex_blue">blue -> b</p>
+          </div>
+        </div>
+        <script type="text/javascript">
+          function saveImg() {
+            var png = document.getElementById("canvas").toDataURL();
+            document.getElementById('img').value = png
+          }
+        </script>
+        <input name="imgURL" type="hidden" value="" id="img">
+        <button class="btn" onclick="saveImg()">追加</button>
+      </form>
+    </div>
+    <a href="/sign_out">ログアウト</a>
+    
+    <div>
+    	<% @contributions.each do |contribution| %>
+    	<div>
+    		<p><%= contribution.user_id %></p>
+    		<p><%= contribution.title %></p>
+    		<img src="<%= contribution.img %>">
+    		<span><%= contribution.good %></span>
+    		<form action="/good/<%= contribution.id %>" method="post">
+    		  <input type="submit" value="いいね">
+    		</form>
+    		<form action="/delet/<%= User.find(session[:user]).name %>/<%= contribution.id %>" method="post">
+    		  <input type="submit" value="削除">
+    		</form>
+    	</div>
+    	<% end %>
+  	</div>
+  </div>
+	
+</body>
+</html>

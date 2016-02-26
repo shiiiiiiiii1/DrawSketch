@@ -6,7 +6,7 @@ end
 class User < ActiveRecord::Base
   has_many :contributions
   has_secure_password
-  validates :password,
+  validates :name,
     presence: true
   validates :password,
     length: {in: 8..15}

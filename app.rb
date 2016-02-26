@@ -20,6 +20,10 @@ get '/sign_out' do
   session[:user] = nil
   redirect '/'
 end
+get '/user/:id' do
+  @contributions = Contribution.all
+  erb :user
+end
 get '/view' do
   @contributions = Contribution.all
   erb :view
@@ -34,7 +38,7 @@ post '/sign_up' do
   if @user.persisted?
     session[:user] = @user.id
   end
-  redirect '/'
+  redirect '/user'
 end
 
 post '/sign_in' do
@@ -42,14 +46,36 @@ post '/sign_in' do
   if user && user.authenticate(params[:password])
     session[:user] = user.id
   end
-  redirect '/'
+  redirect '/user/:id'
 end
 
 post '/create' do
+  day = Time.now
+  year = day.year
+  month = day.month
+  date = day.day
+  hour = day.hour
+  min = day.min
+  sec = day.sec
   Contribution.create({
     title: params[:title],
     img: params[:imgURL],
+    good: 0,
     user_id: session[:user]
   })
-  redirect '/'
+  redirect '/user/:id'
+end
+
+post '/good/:id' do
+  @contribution = Contribution.find(params[:id])
+  good = @contribution.good
+  @contribution.update({
+    good: good + 1
+  })
+  redirect '/view'
+end
+
+post '/delet/:id/:id' do
+  Contribution.find(params[:id]).destroy
+  redirect '/user/:id'
 end
