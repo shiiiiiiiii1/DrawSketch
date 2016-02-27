@@ -21,12 +21,16 @@ get '/sign_out' do
   redirect '/'
 end
 get '/user/:id' do
-  @contributions = Contribution.all
+  @contributions = Contribution.where(user_id: session[:user])
   erb :user
 end
 get '/view' do
-  @contributions = Contribution.all
+  @contributions = Contribution.order("id DESC").all
   erb :view
+end
+get '/view_goods' do
+  @contributions = Contribution.order("good DESC").all
+  erb :view_goods
 end
 
 post '/sign_up' do
@@ -34,11 +38,11 @@ post '/sign_up' do
     name: params[:name],
     password: params[:password],
     password_confirmation: params[:password_confirmation]
-    )
+  )
   if @user.persisted?
     session[:user] = @user.id
   end
-  redirect '/user'
+  redirect '/user/:id'
 end
 
 post '/sign_in' do
@@ -49,14 +53,12 @@ post '/sign_in' do
   redirect '/user/:id'
 end
 
+post 'sign_out' do
+  session[:user] = nil
+  redirect '/'
+end
+
 post '/create' do
-  day = Time.now
-  year = day.year
-  month = day.month
-  date = day.day
-  hour = day.hour
-  min = day.min
-  sec = day.sec
   Contribution.create({
     title: params[:title],
     img: params[:imgURL],

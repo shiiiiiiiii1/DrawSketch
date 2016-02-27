@@ -24,8 +24,7 @@ canvas {
   float: right; }
 
 .border_link {
-  background-color: #ffee99;
-  border-bottom: 5px solid #ffe44c; }
+  background-color: #ffee99; }
 
 body {
   background-color: #FFFEFA; }
@@ -55,9 +54,10 @@ body {
     height: 100%; }
     .user_header .nav_box .nav {
       height: 100%;
-      padding: 15px 10px 5px;
+      padding: 15px 10px 15px;
       text-decoration: none;
-      font-size: 20px; }
+      font-size: 20px;
+      font-family: 'arial unicode ms';}
     .user_header .nav_box .nav_link:hover {
       height: 55px;
       margin-top: 5px;
@@ -67,8 +67,7 @@ body {
   .user_header .account {
     position: absolute;
     right: 0;
-    bottom: 0;
-    margin: 0 15px 5px 0;
+    margin: 13px 15px 0 0;
     font-family: 'Coming Soon', cursive;
     letter-spacing: 5px;
     font-size: 27px; }

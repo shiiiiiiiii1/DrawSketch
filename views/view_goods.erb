@@ -23,7 +23,6 @@
   	<% @contributions.each do |contribution| %>
   	<div>
   		<p><%= User.where(id: contribution.user_id).first.name %></p>
-  		<p><%= contribution.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M:%S")%></p>
   		<p><%= contribution.title %></p>
   		<img src="<%= contribution.img %>">
   		<span><%= contribution.good %></span>
@@ -32,7 +31,6 @@
   		</form>
   	</div>
   	<% end %>
-  	<a class="nav inline nav_link" href="/view_goods">いいね順</a>
 	</div>
 </body>
 </html>
