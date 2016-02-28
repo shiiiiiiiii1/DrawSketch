@@ -14,7 +14,6 @@
 ActiveRecord::Schema.define(version: 20160223032234) do
 
   create_table "contributions", force: :cascade do |t|
-    t.string   "time"
     t.string   "title"
     t.string   "img"
     t.integer  "good",       default: 0

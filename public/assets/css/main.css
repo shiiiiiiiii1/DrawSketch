@@ -1,4 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Coming+Soon);
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+@import url(https://fonts.googleapis.com/css?family=Nunito);
 * {
   margin: 0;
   padding: 0;
@@ -6,6 +7,12 @@
 
 canvas {
   border: 1px solid #000; }
+
+ul, li {
+  list-style: none; }
+
+a {
+  text-decoration: none; }
 
 .clearfix:after {
   content: ".";
@@ -23,81 +30,181 @@ canvas {
 .f_right {
   float: right; }
 
-.border_link {
-  background-color: #ffee99; }
+.mypage {
+  border-top: 3px solid #888; }
 
-body {
-  background-color: #FFFEFA; }
-  
+.button {
+  border: none;
+  background-color: #fff;
+  cursor: pointer; }
+
+.font_color {
+  color: #333; }
+  .font_color:link {
+    color: #333; }
+  .font_color:visited {
+    color: #333; }
+
+.font_color_sub {
+  color: #555; }
+  .font_color_sub:link {
+    color: #555; }
+  .font_color_sub:visited {
+    color: #555; }
+
+.border_color_bold {
+  border-color: #888; }
+
+.border_color {
+  border-color: #888; }
+
+.border_color_mypage {
+  border-top-color: #888;
+  border-bottom-color: #888; }
+
+.bg_color {
+  background-color: whitesmoke; }
+
 .body_width {
-  width: 1200px;
+  width: 1000px;
   margin: 0 auto; }
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1000px) {
     .body_width {
       width: 100%; } }
 
-.user_header {
-  width: 100%;
-  height: 60px;
-  background-color: #ffe44c;
-  box-shadow: 0px 0px 3px;
-  text-align: left;
-  position: relative;
-  margin-bottom: 30px;
-  color: #333; }
-  .user_header .body_width {
-    position: relative; }
-  .user_header .logo {
-    height: 100%;
-    margin: 0 20px; }
-  .user_header .nav_box {
-    height: 100%; }
-    .user_header .nav_box .nav {
-      height: 100%;
-      padding: 15px 10px 15px;
-      text-decoration: none;
-      font-size: 20px;
-      font-family: 'arial unicode ms';}
-    .user_header .nav_box .nav_link:hover {
-      height: 55px;
-      margin-top: 5px;
-      padding: 10px 10px 5px;
-      background-color: #ffee99;
-      border-bottom: 5px solid #ffe44c; }
-  .user_header .account {
-    position: absolute;
-    right: 0;
-    margin: 13px 15px 0 0;
-    font-family: 'Coming Soon', cursive;
-    letter-spacing: 5px;
-    font-size: 27px; }
-
-.draw {
-  margin: 0 auto;
-  width: 645px; }
-  .draw #canvas {
-    float: left;
-    margin: 10px; }
-  .draw .color_box {
-    float: left; }
-    .draw .color_box .ex {
-      padding: 10px 8px;
-      color: #fff;
-      margin: 10px 0 0 10px;
+.header {
+  z-index: 5; }
+  .header .user_header .logo {
+    margin: 30px;
+    font-family: 'Montserrat'; }
+  .header .user_header .account {
+    width: 80px;
+    height: 32px;
+    margin: 45px 30px 30px 30px;
+    font-family: YuGothic;
+    text-align: center;
+    overflow: hidden;
+    transition: all 0.8s ease; }
+    .header .user_header .account:hover {
+      width: 200px; }
+    .header .user_header .account .account_name {
+      padding-left: 10px;
+      border-left-width: 3px;
+      border-left-style: solid; }
+    .header .user_header .account .sign_out {
+      margin-left: 20px; }
+  .header .nav {
+    margin: 0 auto;
+    width: 512px;
+    font-family: YuGothic; }
+    .header .nav .nav_box {
+      height: 48px;
+      margin-right: 50px;
+      padding: 3px 10px;
       text-align: center;
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+      overflow: hidden;
+      transition: all 0.8s ease; }
+      .header .nav .nav_box p {
+        font-size: 20px;
+        cursor: pointer; }
+    .header .nav .nav_contribution:hover {
+      height: 112px; }
+    .header .nav .nav_contribution .nav_contribution_child:hover {
       font-weight: bold; }
-    .draw .color_box .ex_red {
-      background-color: #f00; }
-    .draw .color_box .ex_green {
-      background-color: #0f0; }
-    .draw .color_box .ex_blue {
-      background-color: #00f; }
+    .header .nav .nav_color:hover {
+      height: 240px; }
+    .header .nav .nav_color .nav_color_child:hover {
+      font-weight: bold; }
+    .header .nav .nav_color .red {
+      color: red; }
+    .header .nav .nav_color .green {
+      color: green; }
+    .header .nav .nav_color .blue {
+      color: blue; }
+    .header .nav .nav_color .yellow {
+      color: yellow; }
+    .header .nav .nav_color .purple {
+      color: purple; }
+    .header .nav .nav_color .monochrome {
+      color: black; }
+
+
+.entry {
+  padding: 90px 30px 0; }
 
 .entry_form {
-  width: 645px;
-  margin: 0 auto;
-  text-align: center; }
+  width: 530px;
+  position: fixed; }
+  .entry_form .draw {
+    margin: 0 auto;
+    width: 530px; }
+    .entry_form .draw #canvas {
+      margin: 10px; }
+  .entry_form .color_box .ex {
+    padding: 10px 8px;
+    color: #fff;
+    margin: 10px 0 0 10px;
+    text-align: center;
+    font-weight: bold; }
+  .entry_form .color_box .ex_red {
+    background-color: #f00; }
+  .entry_form .color_box .ex_green {
+    background-color: #0f0; }
+  .entry_form .color_box .ex_blue {
+    background-color: #00f; }
   .entry_form .btn {
     padding: 5px 10px; }
+
+.draw_main {
+  width: 500px;
+  z-index: 1; }
+  .draw_main .draw_box {
+    height: 466px;
+    position: relative;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #333;
+    margin-bottom: 50px;
+    background-image: url("/assets/img/material_bg.png");
+    background-repeat: no-repeat;
+    background-size: contain; }
+  .draw_main .draw_name {
+    position: absolute;
+    right: 70px;
+    bottom: 20px;
+    font-size: 15px;
+    font-family: 'Coming Soon';
+    letter-spacing: 2px; }
+  .draw_main .draw_time {
+    position: absolute;
+    right: 65px;
+    top: 0px;
+    font-size: 13px; }
+  .draw_main .draw_title {
+    position: absolute;
+    top: 23px;
+    left: 100px;
+    font-size: 25px; }
+  .draw_main .draw_img {
+    position: absolute;
+    top: 60px;
+    left: 95px;
+    width: 300px;
+    display: block; }
+  .draw_main .count_good {
+    position: absolute;
+    top: 30px;
+    right: 90px;
+    text-align: center;
+    vertical-align: middle; }
+  .draw_main .btn_good {
+    position: absolute;
+    bottom: 50px;
+    left: 130px; }
+  .draw_main .btn_delete {
+    position: absolute;
+    bottom: 50px;
+    left: 250px; }
 
 /*# sourceMappingURL=main.css.map */

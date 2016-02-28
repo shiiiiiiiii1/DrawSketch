@@ -22,12 +22,12 @@
   <div class="body_width">
   	<% @contributions.each do |contribution| %>
   	<div>
-  		<p><%= User.where(id: contribution.user_id).first.name %></p>
-  		<p><%= contribution.title %></p>
-  		<img src="<%= contribution.img %>">
-  		<span><%= contribution.good %></span>
-  		<form action="/good/<%= contribution.id %>" method="post">
-  		  <input type="submit" value="いいね">
+	  	<p><%= User.where(id: contribution.user_id).first.name %></p>
+	  	<p><%= contribution.title %></p>
+	  	<img src="<%= contribution.img %>">
+	  	<span><%= contribution.good %></span>
+	  	<form action="/good/<%= contribution.id %>/view_goods" method="post">
+	  	  <input type="submit" value="いいね">
   		</form>
   	</div>
   	<% end %>

@@ -21,7 +21,7 @@ get '/sign_out' do
   redirect '/'
 end
 get '/user/:id' do
-  @contributions = Contribution.where(user_id: session[:user])
+  @contributions = Contribution.where(user_id: session[:user]).order("id DESC").all
   erb :user
 end
 get '/view' do
@@ -68,7 +68,22 @@ post '/create' do
   redirect '/user/:id'
 end
 
+post '/delet/:id/:id' do
+  Contribution.find(params[:id]).destroy
+  redirect '/user/:id'
+end
+
+
 post '/good/:id' do
+  @contribution = Contribution.find(params[:id])
+  good = @contribution.good
+  @contribution.update({
+    good: good + 1
+  })
+  redirect '/user/:id'
+end
+
+post '/good/:id/view' do
   @contribution = Contribution.find(params[:id])
   good = @contribution.good
   @contribution.update({
@@ -77,7 +92,11 @@ post '/good/:id' do
   redirect '/view'
 end
 
-post '/delet/:id/:id' do
-  Contribution.find(params[:id]).destroy
-  redirect '/user/:id'
+post '/good/:id/view_goods' do
+  @contribution = Contribution.find(params[:id])
+  good = @contribution.good
+  @contribution.update({
+    good: good + 1
+  })
+  redirect '/view_goods'
 end
