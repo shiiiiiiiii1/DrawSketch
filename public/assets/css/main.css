@@ -5,6 +5,11 @@
   padding: 0;
   box-sizing: border-box; }
 
+html {
+  height: 100%; }
+  html body {
+    height: 100%; }
+
 canvas {
   border: 1px solid #000; }
 
@@ -56,46 +61,113 @@ a {
   border-color: #888; }
 
 .border_color {
-  border-color: #888; }
+  border-color: #333; }
 
 .border_color_mypage {
   border-top-color: #888;
-  border-bottom-color: #888; }
+  border-bottom-color: #333;
+  background-color: #fefefe; }
 
 .bg_color {
-  background-color: whitesmoke; }
+  background-color: #fefefe; }
+
+.bg_color_main_box:hover {
+  color: #fefefe;
+  background-color: #333; }
+
+.bg_color_box {
+  background-color: #333; }
 
 .body_width {
-  width: 1000px;
+  width: 1116px;
   margin: 0 auto; }
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1116px) {
     .body_width {
       width: 100%; } }
 
 .header {
-  z-index: 5; }
-  .header .user_header .logo {
-    margin: 30px;
-    font-family: 'Montserrat'; }
-  .header .user_header .account {
-    width: 80px;
-    height: 32px;
-    margin: 45px 30px 30px 30px;
-    font-family: YuGothic;
-    text-align: center;
-    overflow: hidden;
-    transition: all 0.8s ease; }
-    .header .user_header .account:hover {
-      width: 200px; }
-    .header .user_header .account .account_name {
-      padding-left: 10px;
-      border-left-width: 3px;
-      border-left-style: solid; }
-    .header .user_header .account .sign_out {
-      margin-left: 20px; }
+  z-index: 5;
+  margin: 0 auto; }
+  @media screen and (max-width: 1116px) {
+    .header {
+      margin: 0 20px; } }
+  .header .user_header {
+    position: relative; }
+    .header .user_header .logo {
+      margin: 35px 0;
+      font-family: 'Montserrat'; }
+    .header .user_header .draw_space_btn {
+      position: relative;
+      width: 250px;
+      height: 70px;
+      margin: 20px 0 50px 23%;
+      padding-top: 18px;
+      text-align: center;
+      cursor: pointer;
+      font-family: 'Nunito';
+      font-size: 25px;
+      transition: all 0.8s ease; }
+      .header .user_header .draw_space_btn .bd_box {
+        position: absolute;
+        transition: all 0.4s ease 0.4s; }
+      .header .user_header .draw_space_btn .bd_box2 {
+        position: absolute;
+        transition: all 0.4s ease; }
+      .header .user_header .draw_space_btn .bdT, .header .user_header .draw_space_btn .bdT2 {
+        width: 0;
+        height: 1px;
+        top: 0;
+        left: 0; }
+      .header .user_header .draw_space_btn .bdR, .header .user_header .draw_space_btn .bdR2 {
+        height: 0;
+        width: 1px;
+        top: 0;
+        right: 0; }
+      .header .user_header .draw_space_btn .bdB, .header .user_header .draw_space_btn .bdB2 {
+        width: 0;
+        height: 1px;
+        right: 0;
+        bottom: 0; }
+      .header .user_header .draw_space_btn .bdL, .header .user_header .draw_space_btn .bdL2 {
+        height: 0;
+        width: 1px;
+        bottom: 0;
+        left: 0; }
+      .header .user_header .draw_space_btn:hover .bd_box {
+        transition: all 0.4s ease; }
+      .header .user_header .draw_space_btn:hover .bd_box2 {
+        transition: all 0.4s ease 0.4s; }
+      .header .user_header .draw_space_btn:hover .bdT, .header .user_header .draw_space_btn:hover .bdT2 {
+        width: 100%;
+        height: 1px; }
+      .header .user_header .draw_space_btn:hover .bdR, .header .user_header .draw_space_btn:hover .bdR2 {
+        height: 100%;
+        width: 1px; }
+      .header .user_header .draw_space_btn:hover .bdB, .header .user_header .draw_space_btn:hover .bdB2 {
+        width: 100%;
+        height: 1px; }
+      .header .user_header .draw_space_btn:hover .bdL, .header .user_header .draw_space_btn:hover .bdL2 {
+        height: 100%;
+        width: 1px; }
+    .header .user_header .account {
+      width: 80px;
+      height: 32px;
+      margin: 40px 0 30px 0;
+      font-family: YuGothic;
+      text-align: center;
+      overflow: hidden;
+      transition: all 0.8s ease; }
+      .header .user_header .account:hover {
+        width: 200px; }
+      .header .user_header .account .account_name {
+        padding-left: 10px;
+        border-left-width: 3px;
+        border-left-style: solid; }
+      .header .user_header .account .sign_out {
+        margin-left: 20px; }
   .header .nav {
     margin: 0 auto;
-    width: 512px;
+    width: 462px;
     font-family: YuGothic; }
     .header .nav .nav_box {
       height: 48px;
@@ -105,106 +177,216 @@ a {
       border-bottom-width: 1px;
       border-bottom-style: solid;
       overflow: hidden;
-      transition: all 0.8s ease; }
-      .header .nav .nav_box p {
+      cursor: pointer;}
+      .header .nav .nav_box .nav_font {
         font-size: 20px;
         cursor: pointer; }
-    .header .nav .nav_contribution:hover {
-      height: 112px; }
-    .header .nav .nav_contribution .nav_contribution_child:hover {
-      font-weight: bold; }
-    .header .nav .nav_color:hover {
-      height: 240px; }
-    .header .nav .nav_color .nav_color_child:hover {
-      font-weight: bold; }
-    .header .nav .nav_color .red {
-      color: red; }
-    .header .nav .nav_color .green {
-      color: green; }
-    .header .nav .nav_color .blue {
-      color: blue; }
-    .header .nav .nav_color .yellow {
-      color: yellow; }
-    .header .nav .nav_color .purple {
-      color: purple; }
-    .header .nav .nav_color .monochrome {
-      color: black; }
+    .header .nav .nav_contribution {
+      transition: all 0.5s ease; }
+      .header .nav .nav_contribution:hover {
+        height: 112px; }
+      .header .nav .nav_contribution .nav_contribution_child:hover {
+        font-weight: bold; }
+    .header .nav .nav_color {
+      margin-right: 0;
+      transition: all 1s ease; }
+      .header .nav .nav_color:hover {
+        height: 240px; }
+      .header .nav .nav_color .nav_color_child {
+        cursor: pointer; }
+        .header .nav .nav_color .nav_color_child:hover {
+          font-weight: bold; }
+      .header .nav .nav_color .red {
+        color: red; }
+      .header .nav .nav_color .green {
+        color: green; }
+      .header .nav .nav_color .blue {
+        color: blue; }
+      .header .nav .nav_color .yellow {
+        color: yellow; }
+      .header .nav .nav_color .purple {
+        color: purple; }
+      .header .nav .nav_color .monochrome {
+        color: black; }
 
-
-.entry {
-  padding: 90px 30px 0; }
-
-.entry_form {
-  width: 530px;
-  position: fixed; }
-  .entry_form .draw {
-    margin: 0 auto;
-    width: 530px; }
-    .entry_form .draw #canvas {
-      margin: 10px; }
-  .entry_form .color_box .ex {
-    padding: 10px 8px;
-    color: #fff;
-    margin: 10px 0 0 10px;
-    text-align: center;
-    font-weight: bold; }
-  .entry_form .color_box .ex_red {
-    background-color: #f00; }
-  .entry_form .color_box .ex_green {
-    background-color: #0f0; }
-  .entry_form .color_box .ex_blue {
-    background-color: #00f; }
-  .entry_form .btn {
-    padding: 5px 10px; }
-
-.draw_main {
-  width: 500px;
-  z-index: 1; }
-  .draw_main .draw_box {
-    height: 466px;
-    position: relative;
-    padding-bottom: 40px;
-    border-bottom: 1px solid #333;
-    margin-bottom: 50px;
-    background-image: url("/assets/img/material_bg.png");
-    background-repeat: no-repeat;
-    background-size: contain; }
-  .draw_main .draw_name {
+.draw_box {
+  width: 480px;
+  margin: 80px 10px;
+  position: relative; }
+  .draw_box .draw_time {
     position: absolute;
-    right: 70px;
-    bottom: 20px;
-    font-size: 15px;
-    font-family: 'Coming Soon';
-    letter-spacing: 2px; }
-  .draw_main .draw_time {
-    position: absolute;
-    right: 65px;
-    top: 0px;
+    right: 30px;
     font-size: 13px; }
-  .draw_main .draw_title {
-    position: absolute;
-    top: 23px;
-    left: 100px;
-    font-size: 25px; }
-  .draw_main .draw_img {
-    position: absolute;
-    top: 60px;
-    left: 95px;
-    width: 300px;
-    display: block; }
-  .draw_main .count_good {
+  .draw_box .draw_img_bg {
+    width: 100%; }
+  .draw_box .draw_title {
     position: absolute;
     top: 30px;
-    right: 90px;
-    text-align: center;
-    vertical-align: middle; }
-  .draw_main .btn_good {
+    left: 80px;
+    font-size: 22px;
+    font-weight: bold; }
+  .draw_box .count_good {
     position: absolute;
-    bottom: 50px;
-    left: 130px; }
-  .draw_main .btn_delete {
+    top: 38px;
+    right: 50px; }
+  .draw_box .draw_img {
+    width: 65%;
     position: absolute;
+    top: 70px;
+    left: 100px; }
+  .draw_box .btn_good {
+    position: absolute;
+    left: 200px;
     bottom: 50px;
-    left: 250px; }
+    width: 30px;
+    height: 30px;
+    background-image: url("/assets/img/good.png");
+    background-repeat: no-repeat;
+    background-size: contain; }
+  .draw_box .btn_good2 {
+    position: absolute;
+    left: 240px;
+    bottom: 50px;
+    width: 30px;
+    height: 30px;
+    background-image: url("/assets/img/good.png");
+    background-repeat: no-repeat;
+    background-size: contain; }
+  .draw_box .btn_delete {
+    position: absolute;
+    left: 280px;
+    bottom: 50px;
+    width: 30px;
+    height: 30px;
+    background-image: url("/assets/img/delete.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: all 0.1s linear; }
+    .draw_box .btn_delete:hover {
+      transform: scale(1.1); }
+  .draw_box .draw_name {
+    position: absolute;
+    right: 40px;
+    bottom: 25px;
+    font-family: YuGothic; }
+  @media screen and (max-width: 1116px) {
+    .draw_box {
+      float: none;
+      margin: 80px auto; } }
 
-/*# sourceMappingURL=main.css.map */
+.draw_window {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.draw_form {
+  display: none;
+  margin-top: 50px;
+  z-index: 5;
+  position: fixed;
+  top: 0;
+  left: 0; }
+
+/*---topページ-------------------------------------------------------------------------*/
+.top_box_d {
+  width: 80%;
+  height: 30%;
+  position: relative;
+  background-color: rgba(51, 51, 51, 0.1);
+  animation: top_bg_d 1.5s ease-in-out 2s 2 alternate; }
+@keyframes top_bg_d {
+  100% {
+    background-color: rgba(51, 51, 51, 0.7); } }
+  .top_box_d .top_bt, .top_box_d .top_bb {
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: #fff; }
+  .top_box_d .top_bt {
+    bottom: 0;
+    animation: top_bt 2s ease; }
+  .top_box_d .top_bb {
+    bottom: 100%;
+    animation: top_bb 2s ease; }
+@keyframes top_bt {
+  0% {
+    bottom: 100%; }
+  30% {
+    bottom: 0; } }
+@keyframes top_bb {
+  0% {
+    bottom: 0; }
+  45% {
+    bottom: 0; }
+  80% {
+    bottom: 100%; } }
+.top_box_w {
+  width: 20%;
+  height: 70%;
+  position: relative;
+  background-color: rgba(51, 51, 51, 0.1);
+  animation: top_bg_w 1.5s ease-in-out 2s 2 alternate; }
+@keyframes top_bg_w {
+  100% {
+    background-color: rgba(51, 51, 51, 0.7); } }
+  .top_box_w .top_br, .top_box_w .top_bl {
+    position: absolute;
+    height: 100%;
+    width: 3px;
+    background-color: #fff; }
+  .top_box_w .top_br {
+    right: 100%;
+    animation: top_br 2s ease; }
+  .top_box_w .top_bl {
+    right: 0;
+    animation: top_bl 2s ease; }
+@keyframes top_br {
+  0% {
+    right: 0; }
+  20% {
+    right: 0; }
+  55% {
+    right: 100%; } }
+@keyframes top_bl {
+  0% {
+    right: 100%; }
+  70% {
+    right: 100%; }
+  100% {
+    right: 0; } }
+.top_box_main {
+  width: 60%;
+  height: 40%;
+  position: relative; }
+  .top_box_main .top_box {
+    width: 60%;
+    height: 285px;
+    padding: 50px;
+    position: relative;
+    text-align: center;
+    margin: 0 auto; }
+    .top_box_main .top_box .top_text {
+      margin-bottom: 50px; }
+    .top_box_main .top_box .top_btn {
+      width: 200px;
+      margin: 20px;
+      font-size: 15px;
+      padding: 20px 30px;
+      border: 1px solid #333;
+      position: absolute;
+      transition: all 0.2s ease; }
+      .top_box_main .top_box .top_btn:hover {
+        transform: scale(1.1, 1.1);
+        background-color: rgba(51, 51, 51, 0.1);
+        border: none; }
+    .top_box_main .top_box .top_signin_btn {
+      left: 5%; }
+    .top_box_main .top_box .top_signup_btn {
+      right: 5%; }
+
+/*# sourceMappingURL=main2.css.map */

@@ -3,14 +3,25 @@
 <head>
 	<meta charset="UTF-8">
 	<title>views</title>
-	<link rel="stylesheet" href="../assets/css/main.css">
-	<script src="../assets/js/processing.js"></script>
+	<link rel="stylesheet" href="/assets/css/main.css">
+	<script src="/assets/js/processing.js"></script>
 </head>
 <body class="bg_color">
   <header class="header">
   	<div class="user_header body_width">
   		<div class="clearfix">
   			<h1 class="logo f_left">DRAWING</h1>
+  			<div class="draw_space_btn bg_color_main_box f_left">
+					<p>Let's DRAW !</p>
+					<div class="bdT bd_box bg_color_box"></div>
+					<div class="bdR bd_box bg_color_box"></div>
+					<div class="bdB bd_box bg_color_box"></div>
+					<div class="bdL bd_box bg_color_box"></div>
+					<div class="bdT2 bd_box2 bg_color"></div>
+					<div class="bdR2 bd_box2 bg_color"></div>
+					<div class="bdB2 bd_box2 bg_color"></div>
+					<div class="bdL2 bd_box2 bg_color"></div>
+				</div>
   			<p class="account f_right font_color">
   				<a class="account_name font_color border_color" href="/user/:id"><%= User.find(session[:user]).name %></a>
   				<a class="sign_out font_color" href="/sign_out">ログアウト</a>
@@ -18,15 +29,15 @@
   		</div>
   		<div class="nav clearfix">
   			<ul class="nav_box nav_home mypage f_left border_color_mypage">
-  				<p><a class="font_color" href="/user/:id">MyPage</a></p>
+  				<li><a class="font_color nav_font" href="/user/:id">MyPage</a></li>
   			</ul>
   			<ul class="nav_box nav_contribution f_left border_color">
-  				<p class="font_color">Contribution</p>
+  				<li class="font_color nav_font">Contribution</li>
   				<li class="nav_contribution_child"><a class="font_color_sub" href="/view">new</a></li>
   				<li class="nav_contribution_child"><a class="font_color_sub" href="/view_goods">popularity</a></li>
   			</ul>
   			<ul class="nav_box nav_color f_left border_color">
-  				<p class="font_color">ThemeColor</p>
+  				<li class="font_color nav_font">ThemeColor</li>
   				<li class="nav_color_child red">red</li>
   				<li class="nav_color_child green">green</li>
   				<li class="nav_color_child blue">blue</li>
@@ -37,9 +48,28 @@
   		</div>
   	</div>
   </header>
-
+  
   <div class="body_width entry clearfix">
-    <div class="entry_form f_left">
+    <% @contributions.each do |contribution| %>
+		<div class="draw_box f_left">
+			<p class="draw_time inline"><%= contribution.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M:%S")%></p>
+			<img class="draw_img_bg" src="/assets/img/draw_bg.png" alt="backgroundImage">
+			<p class="draw_title"><%= contribution.title %></p>
+			<span class="count_good inline">GOOD !：<%= contribution.good %></span>
+			<img class="draw_img inline" src="<%= contribution.img %>">
+			<form action="/good/<%= contribution.id %>" method="post">
+				<button class="btn_good button"></button>
+			</form>
+			<form action="/delete/<%= User.find(session[:user]).name %>/<%= contribution.id %>" method="post">
+				<button class="btn_delete button"></button>
+			</form>
+			<p class="draw_name inline"><%= User.where(id: contribution.user_id).first.name %></p>
+		</div>
+		<% end %>
+	</div>
+
+  <div class="draw_window">
+    <div class="entry_form">
       <form name="formDate" action="/create" method="post">
         <p>タイトル：<input name="title" type="text"></p>
         
@@ -85,27 +115,9 @@
         <button class="btn" onclick="saveImg()">追加</button>
       </form>
     </div>
-
-    <div class="draw_main f_right">
-    	<% @contributions.each do |contribution| %>
-    	<div class="draw_box">
-    		<p class="draw_name inline"><%= User.where(id: contribution.user_id).first.name %></p>
-    		<p class="draw_time inline"><%= contribution.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M:%S")%></p>
-    		<p class="draw_title"><%= contribution.title %></p>
-    		<img class="draw_img" src="<%= contribution.img %>">
-    		<span class="count_good">いいね：<%= contribution.good %></span>
-    		<form action="/good/<%= contribution.id %>" method="post">
-    		  <button class="btn_good">いいね</button>
-    		</form>
-    		<form action="/delet/<%= User.find(session[:user]).name %>/<%= contribution.id %>" method="post">
-    		  <button class="btn_delete">削除</button>
-    		</form>
-    	</div>
-    	<% end %>
-  	</div>
   </div>
 	
 </body>
-<script src="../assets/js/jquery.js"></script>
-<script src="../assets/js/main.js"></script>
+<script src="/assets/js/jquery.js"></script>
+<script src="/assets/js/main.js"></script>
 </html>

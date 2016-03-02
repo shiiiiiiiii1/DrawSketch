@@ -3,34 +3,119 @@
 <head>
 	<meta charset="UTF-8">
 	<title>views</title>
-	<link rel="stylesheet" href="../assets/css/main.css">
-	<script src="../assets/js/processing.js"></script>
+	<link rel="stylesheet" href="/assets/css/main.css">
+	<script src="/assets/js/processing.js"></script>
 </head>
-<body>
-  <header class="user_header">
-		<div class="body_width">
-			<h1 class="logo inline">LG</h1>
-			<div class="nav_box inline"><!--
-		 --><a class="nav inline nav_link" href="/user/:id">ホーム</a><!--
-		 --><a class="nav inline border_link" href="/view">投稿一覧</a>
-			</div>
-			<h2 class="account inline"><%= User.find(session[:user]).name %></h2>
-		</div>
-	</header>
-	
-	
-  <div class="body_width">
-  	<% @contributions.each do |contribution| %>
-  	<div>
-	  	<p><%= User.where(id: contribution.user_id).first.name %></p>
-	  	<p><%= contribution.title %></p>
-	  	<img src="<%= contribution.img %>">
-	  	<span><%= contribution.good %></span>
-	  	<form action="/good/<%= contribution.id %>/view_goods" method="post">
-	  	  <input type="submit" value="いいね">
-  		</form>
+<body class="bg_color">
+  <header class="header">
+  	<div class="user_header body_width">
+  		<div class="clearfix">
+  			<h1 class="logo f_left">DRAWING</h1>
+  			<div class="draw_space_btn bg_color_main_box f_left">
+					<p>Let's DRAW !</p>
+					<div class="bdT bd_box bg_color_box"></div>
+					<div class="bdR bd_box bg_color_box"></div>
+					<div class="bdB bd_box bg_color_box"></div>
+					<div class="bdL bd_box bg_color_box"></div>
+					<div class="bdT2 bd_box2 bg_color"></div>
+					<div class="bdR2 bd_box2 bg_color"></div>
+					<div class="bdB2 bd_box2 bg_color"></div>
+					<div class="bdL2 bd_box2 bg_color"></div>
+				</div>
+  			<p class="account f_right font_color">
+  				<a class="account_name font_color border_color" href="/user/:id"><%= User.find(session[:user]).name %></a>
+  				<a class="sign_out font_color" href="/sign_out">ログアウト</a>
+  			</p>
+  		</div>
+  		<div class="nav clearfix">
+  			<ul class="nav_box nav_home f_left border_color">
+  				<p><a class="font_color nav_font" href="/user/:id">MyPage</a></p>
+  			</ul>
+  			<ul class="nav_box nav_contribution f_left mypage border_color_mypage">
+  				<p class="font_color nav_font">Contribution</p>
+  				<li class="nav_contribution_child"><a class="font_color_sub" href="/view">new</a></li>
+  				<li class="nav_contribution_child"><a class="font_color_sub" href="/view_goods">popularity</a></li>
+  			</ul>
+  			<ul class="nav_box nav_color f_left border_color">
+  				<p class="font_color nav_font">ThemeColor</p>
+  				<li class="nav_color_child red">red</li>
+  				<li class="nav_color_child green">green</li>
+  				<li class="nav_color_child blue">blue</li>
+  				<li class="nav_color_child yellow">yellow</li>
+  				<li class="nav_color_child purple">purple</li>
+  				<li class="nav_color_child monochrome">monochrome</li>
+  			</ul>
+  		</div>
   	</div>
-  	<% end %>
+  </header>
+  
+  <div class="body_width entry clearfix">
+    <% @contributions.each do |contribution| %>
+		<div class="draw_box f_left">
+			<p class="draw_time inline"><%= contribution.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M:%S")%></p>
+			<img class="draw_img_bg" src="../assets/img/draw_bg.png" alt="backgroundImage">
+			<p class="draw_title"><%= contribution.title %></p>
+			<span class="count_good inline">GOOD !：<%= contribution.good %></span>
+			<img class="draw_img inline" src="<%= contribution.img %>">
+			<form action="/good/<%= contribution.id %>/view_goods" method="post">
+				<button class="btn_good2 button"></button>
+			</form>
+			<p class="draw_name inline"><%= User.where(id: contribution.user_id).first.name %></p>
+		</div>
+		<% end %>
 	</div>
+	
+	<div class="draw_window">
+    <div class="entry_form">
+      <form name="formDate" action="/create" method="post">
+        <p>タイトル：<input name="title" type="text"></p>
+        
+        <div class="draw">
+          <canvas id="canvas"></canvas>
+          <script type="text/javascript" src="/assets/js/read.js"></script>
+          <script id="processing-code" type="application/processing">
+            int bgcolor = #ffffff;
+            void setup() {
+              size(500, 500);
+              background(bgcolor);
+            }
+            void draw() {
+              int dcolor = #000000;
+              if ((keyPressed) && (key == 'r')) dcolor = #ff0000;
+              if ((keyPressed) && (key == 'b')) dcolor = #0000ff;
+              if ((keyPressed) && (key == 'g')) dcolor = #00ff00;
+              if (mouseButton == LEFT) {
+                strokeWeight(3);
+                stroke(dcolor);
+                if (mousePressed) line (mouseX, mouseY, pmouseX, pmouseY);
+              } else if (mouseButton == RIGHT) {
+                strokeWeight(10);
+                stroke(bgcolor);
+                if (mousePressed) line (mouseX, mouseY, pmouseX, pmouseY);
+              }
+            }
+          </script>
+  				
+          <div class="color_box">
+            <p class="ex ex_red">red -> r</p>
+            <p class="ex ex_green">green -> g</p>
+            <p class="ex ex_blue">blue -> b</p>
+          </div>
+        </div>
+        <script type="text/javascript">
+          function saveImg() {
+            var png = document.getElementById("canvas").toDataURL();
+            document.getElementById('img').value = png
+          }
+        </script>
+        <input name="imgURL" type="hidden" value="" id="img">
+        <button class="btn" onclick="saveImg()">追加</button>
+      </form>
+    </div>
+  </div>
+	
+	
 </body>
+<script src="/assets/js/jquery.js"></script>
+<script src="/assets/js/main.js"></script>
 </html>

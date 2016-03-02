@@ -10,28 +10,37 @@ enable :sessions
 get '/' do
   erb :index
 end
+
 get '/sign_up' do
   erb :sign_up
 end
+
 get '/sign_in' do
   erb :sign_in
 end
+
 get '/sign_out' do
   session[:user] = nil
   redirect '/'
 end
+
 get '/user/:id' do
-  @contributions = Contribution.where(user_id: session[:user]).order("id DESC").all
+  @contributions = Contribution.where(user_id: session[:user]).order("id DESC")
   erb :user
 end
+
 get '/view' do
-  @contributions = Contribution.order("id DESC").all
+  @contributions = Contribution.order("id DESC")
+  
+  # @theme_color = "red"
   erb :view
 end
+
 get '/view_goods' do
-  @contributions = Contribution.order("good DESC").all
+  @contributions = Contribution.order("good DESC")
   erb :view_goods
 end
+
 
 post '/sign_up' do
   @user = User.create(
@@ -68,7 +77,7 @@ post '/create' do
   redirect '/user/:id'
 end
 
-post '/delet/:id/:id' do
+post '/delete/:id/:id' do
   Contribution.find(params[:id]).destroy
   redirect '/user/:id'
 end
