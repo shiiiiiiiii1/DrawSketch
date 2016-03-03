@@ -153,7 +153,7 @@
 // 	$(".bg_color").css('background-color', 'rgba(254, 254, 254, 1)');
 // });
 $(".btn_delete").click(function() {
-	if(confirm("この投稿を削除しますか？")) return ture
+	if(confirm("この投稿を削除しますか？")) return true
 	else return false
 });
 

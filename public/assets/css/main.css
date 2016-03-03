@@ -11,7 +11,8 @@ html {
     height: 100%; }
 
 canvas {
-  border: 1px solid #000; }
+  border: 1px solid #000;
+  cursor: crosshair;}
 
 ul, li {
   list-style: none; }
@@ -65,8 +66,7 @@ a {
 
 .border_color_mypage {
   border-top-color: #888;
-  border-bottom-color: #333;
-  background-color: #fefefe; }
+  border-bottom-color: #333; }
 
 .bg_color {
   background-color: #fefefe; }
@@ -242,7 +242,10 @@ a {
     height: 30px;
     background-image: url("/assets/img/good.png");
     background-repeat: no-repeat;
-    background-size: contain; }
+    background-size: contain;
+    transition: all 0.1s linear; }
+    .draw_box .btn_good:hover {
+      transform: scale(1.1); }
   .draw_box .btn_good2 {
     position: absolute;
     left: 240px;
@@ -251,7 +254,10 @@ a {
     height: 30px;
     background-image: url("/assets/img/good.png");
     background-repeat: no-repeat;
-    background-size: contain; }
+    background-size: contain;
+    transition: all 0.1s linear; }
+    .draw_box .btn_good2:hover {
+      transform: scale(1.1); }
   .draw_box .btn_delete {
     position: absolute;
     left: 280px;
@@ -274,7 +280,11 @@ a {
       float: none;
       margin: 80px auto; } }
 
-.draw_window {
+
+  /*	pictureDraw画面	--------------------------------------------------------------------------------*/
+
+  
+  .draw_window {
   display: none;
   width: 100%;
   height: 100%;
@@ -282,37 +292,158 @@ a {
   top: 0;
   left: 0;
   z-index: 3;
-  background-color: rgba(0, 0, 0, 0.7); }
+  background-color: rgba(0, 0, 0, 0.8); }
 
-.draw_form {
+.draw_form_main .draw_form {
   display: none;
-  margin-top: 50px;
+  margin-top: 100px;
+  margin-left: 5%;
   z-index: 5;
-  position: fixed;
+  position: absolute;
   top: 0;
-  left: 0; }
+  color: #fff; }
+
+.helper {
+  margin-top: 50px;
+  margin-right: 50px; }
+  .helper .draw_help {
+    height: 70px;
+    margin-bottom: 20px;
+    font-size: 25px;
+    border-bottom: 1px dashed #fff; }
+    .helper .draw_help .keybord_img {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+      background-image: url("/assets/img/keybord.png");
+      background-size: 100%;
+      background-repeat: no-repeat; }
+    .helper .draw_help .help_black {
+      color: #ccc; }
+    .helper .draw_help .help_red {
+      color: #f00; }
+    .helper .draw_help .help_green {
+      color: #0f0; }
+    .helper .draw_help .help_blue {
+      color: #00f; }
+    .helper .draw_help .keybord_mouse {
+      margin-left: 10px; }
+    .helper .draw_help .keybord_red {
+      background-position-y: -100px; }
+    .helper .draw_help .keybord_green {
+      background-position-y: -150px; }
+    .helper .draw_help .keybord_blue {
+      background-position-y: -200px; }
+    .helper .draw_help .keybord_delete {
+      background-position-y: -50px; }
+
+.draw_area {
+  text-align: center; }
+  .draw_area .draw_title {
+    margin-bottom: 20px;
+    font-size: 20px; }
+    .draw_area .draw_title .draw_text_area {
+      font-size: 20px;
+      padding: 5px; }
+  .draw_area .draw_btn {
+    font-size: 15px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #eee;
+    border: 1px solid #333;
+    transition: all 0.2s ease; }
+    .draw_area .draw_btn:hover {
+      transform: scale(1.1);
+      background-color: #fff;
+      border: 1px solid #fff; }
+
+@media screen and (max-width: 1116px) {
+  .draw_form_main {
+    width: 550px;
+    position: static; }
+    .draw_form_main .draw_form {
+      position: absolute;
+      top: 0;
+      margin-left: 0;
+      margin-top: 50px; }
+      .draw_form_main .draw_form .f_left {
+        float: none; }
+      .draw_form_main .draw_form .helper {
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 50px; } }
+/*---サインイン-------------------------------------------------------------------------*/
+.text_box {
+  width: 50%;
+  height: 35px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 15px;
+  border: 1px inset 0.5px #333;
+  border-radius: 5px; }
+
+.title {
+  margin: 30px 0;
+  padding-left: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #333; }
+  @media screen and (max-width: 1116px) {
+    .title {
+      margin: 30px 30px; } }
+
+.signin {
+  width: 50%;
+  text-align: center;
+  margin: 200px auto 50px;
+  padding: 40px;
+  border: 1px solid #333;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4); }
+  .signin .signin_text_name {
+    font-size: 30px;
+    font-family: 'Montserrat';
+    margin-bottom: 30px; }
+  .signin .signin_btn {
+    font-size: 15px;
+    padding: 10px 20px;
+    background-color: #fff;
+    border: 1px solid #333;
+    transition: all 0.2s ease;
+    cursor: pointer;}
+    .signin .signin_btn:hover {
+      transform: scale(1.2);
+      background-color: rgba(51, 51, 51, 0.1);
+      border: 1px solid #fff; }
 
 /*---topページ-------------------------------------------------------------------------*/
 .top_box_d {
   width: 80%;
   height: 30%;
   position: relative;
-  background-color: rgba(51, 51, 51, 0.1);
-  animation: top_bg_d 1.5s ease-in-out 2s 2 alternate; }
+  /*background-color: rgba(51, 51, 51, 0.1);*/
+  animation: top_bg_d 8s ease-in-out infinite; }
 @keyframes top_bg_d {
+  0% {
+    background-color: hsla(0, 100%, 50%, 0.2); }
+  25% {
+    background-color: hsla(90, 100%, 50%, 0.2); }
+  50% {
+    background-color: hsla(180, 100%, 50%, 0.2); }
+  75% {
+    background-color: hsla(270, 100%, 50%, 0.2); }
   100% {
-    background-color: rgba(51, 51, 51, 0.7); } }
+    background-color: hsla(359, 100%, 50%, 0.2); } }
   .top_box_d .top_bt, .top_box_d .top_bb {
     position: absolute;
     width: 100%;
-    height: 3px;
+    height: 5px;
     background-color: #fff; }
   .top_box_d .top_bt {
     bottom: 0;
-    animation: top_bt 2s ease; }
+    animation: top_bt 4s ease infinite alternate; }
   .top_box_d .top_bb {
     bottom: 100%;
-    animation: top_bb 2s ease; }
+    animation: top_bb 4s ease infinite alternate; }
 @keyframes top_bt {
   0% {
     bottom: 100%; }
@@ -329,22 +460,30 @@ a {
   width: 20%;
   height: 70%;
   position: relative;
-  background-color: rgba(51, 51, 51, 0.1);
-  animation: top_bg_w 1.5s ease-in-out 2s 2 alternate; }
+  /*background-color: rgba(51, 51, 51, 0.1);*/
+  animation: top_bg_w 8s ease-in-out infinite; }
 @keyframes top_bg_w {
+  0% {
+    background-color: hsla(0, 100%, 50%, 0.2); }
+  25% {
+    background-color: hsla(90, 100%, 50%, 0.2); }
+  50% {
+    background-color: hsla(180, 100%, 50%, 0.2); }
+  75% {
+    background-color: hsla(270, 100%, 50%, 0.2); }
   100% {
-    background-color: rgba(51, 51, 51, 0.7); } }
+    background-color: hsla(359, 100%, 50%, 0.2); } }
   .top_box_w .top_br, .top_box_w .top_bl {
     position: absolute;
     height: 100%;
-    width: 3px;
+    width: 5px;
     background-color: #fff; }
   .top_box_w .top_br {
     right: 100%;
-    animation: top_br 2s ease; }
+    animation: top_br 4s ease infinite alternate; }
   .top_box_w .top_bl {
     right: 0;
-    animation: top_bl 2s ease; }
+    animation: top_bl 4s ease infinite alternate; }
 @keyframes top_br {
   0% {
     right: 0; }
@@ -373,10 +512,9 @@ a {
     .top_box_main .top_box .top_text {
       margin-bottom: 50px; }
     .top_box_main .top_box .top_btn {
-      width: 200px;
       margin: 20px;
       font-size: 15px;
-      padding: 20px 30px;
+      padding: 20px 13%;
       border: 1px solid #333;
       position: absolute;
       transition: all 0.2s ease; }
@@ -388,5 +526,25 @@ a {
       left: 5%; }
     .top_box_main .top_box .top_signup_btn {
       right: 5%; }
+
+
+
+/*---footer-------------------------------------------------------------------------*/
+.footer {
+  text-align: center;
+  font-size: 13px;
+}
+
+.top_footer {
+  text-align: center;
+  margin-top: 70px;
+  font-size: 13px;
+}
+
+.view_footer {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 13px;
+}
 
 /*# sourceMappingURL=main2.css.map */

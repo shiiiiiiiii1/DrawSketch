@@ -29,15 +29,15 @@
   		</div>
   		<div class="nav clearfix">
   			<ul class="nav_box nav_home f_left border_color">
-  				<p><a class="font_color nav_font" href="/user/:id">MyPage</a></p>
+  				<li><a class="font_color nav_font" href="/user/:id">MyPage</a></li>
   			</ul>
   			<ul class="nav_box nav_contribution f_left mypage border_color_mypage">
-  				<p class="font_color nav_font">Contribution</p>
+  				<li class="font_color nav_font">Contribution</li>
   				<li class="nav_contribution_child"><a class="font_color_sub" href="/view">new</a></li>
   				<li class="nav_contribution_child"><a class="font_color_sub" href="/view_goods">popularity</a></li>
   			</ul>
   			<ul class="nav_box nav_color f_left border_color">
-  				<p class="font_color nav_font">ThemeColor</p>
+  				<li class="font_color nav_font">ThemeColor</li>
   				<li class="nav_color_child red">red</li>
   				<li class="nav_color_child green">green</li>
   				<li class="nav_color_child blue">blue</li>
@@ -65,11 +65,42 @@
 		<% end %>
 	</div>
 	
-	<div class="draw_window">
-    <div class="entry_form">
-      <form name="formDate" action="/create" method="post">
-        <p>タイトル：<input name="title" type="text"></p>
-        
+	<div class="draw_window"></div>
+  
+  <div class="draw_form_main body_width">
+    <div class="draw_form clearfix">
+      <div class="helper f_left">
+				<p class="draw_help_black draw_help">
+					<span class="help_black">黒色 :</span>
+					<span class="keybord_black keybord_img inline"></span>
+				</p>
+				<p class="draw_help_red draw_help">
+					<span class="help_red">赤色 :</span>
+					<span class="keybord_red keybord_img inline"></span>
+					＋
+					<span class="keybord_mouse keybord_img inline"></span>
+				</p>
+				<p class="draw_help_green draw_help">
+					<span class="help_green">緑色 :</span>
+					<span class="keybord_green keybord_img inline"></span>
+					＋
+					<span class="keybord_mouse keybord_img inline"></span>
+				</p>
+				<p class="draw_help_blue draw_help">
+					<span class="help_blue">青色 :</span>
+					<span class="keybord_blue keybord_img inline"></span>
+					＋
+					<span class="keybord_mouse keybord_img inline"></span>
+				</p>
+				<p class="draw_help_delete draw_help">
+					<span class="help_delete">消しゴム :</span>
+					<span class="keybord_delete keybord_img inline"></span>
+					＋
+					<span class="keybord_mouse keybord_img inline"></span>
+				</p>
+			</div>
+      <form class="draw_area f_left" name="formDate" action="/create" method="post">
+        <p class="draw_title">タイトル：<input class="draw_text_area" name="title" type="text"></p>
         <div class="draw">
           <canvas id="canvas"></canvas>
           <script type="text/javascript" src="/assets/js/read.js"></script>
@@ -95,12 +126,6 @@
               }
             }
           </script>
-  				
-          <div class="color_box">
-            <p class="ex ex_red">red -> r</p>
-            <p class="ex ex_green">green -> g</p>
-            <p class="ex ex_blue">blue -> b</p>
-          </div>
         </div>
         <script type="text/javascript">
           function saveImg() {
@@ -109,11 +134,14 @@
           }
         </script>
         <input name="imgURL" type="hidden" value="" id="img">
-        <button class="btn" onclick="saveImg()">追加</button>
+        <button class="draw_btn" onclick="saveImg()">追加</button>
       </form>
     </div>
   </div>
 	
+	<footer class="view_footer">
+		Copyright © 2016.03.05 ShoichiYokobori
+	</footer>
 	
 </body>
 <script src="/assets/js/jquery.js"></script>

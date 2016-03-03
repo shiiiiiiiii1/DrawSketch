@@ -3,12 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <title>draw_sketch</title>
+	<link rel="stylesheet" href="/assets/css/main.css">
+	<script src="/assets/js/processing.js"></script>
 </head>
 <body>
-  <form action="/sign_in" method="post">
-    <input type="text" name="name" placeholder="ID"><br>
-    <input type="password" name="password" placeholder="パスワード"><br>
-    <input type="submit" value="ログイン"><br>
-  </form>
+  <div class="body_width">
+		<h1 class="title">DRAWING</h1>
+		<form class="signin" action="/sign_in" method="post">
+			<h2 class="signin_text_name">ログイン</h1>
+			<input class="signin_id text_box" type="text" name="name" placeholder="ID"><br>
+			<input class="signin_password text_box" type="password" name="password" placeholder="パスワード"><br>
+			<button class="signin_btn">ログイン</button>
+		</form>
+		<footer class="footer">
+			Copyright © 2016.03.05 ShoichiYokobori
+		</footer>
+	</div>
 </body>
+<script src="/assets/js/jquery.js"></script>
+<script src="/assets/js/main.js"></script>
 </html>
